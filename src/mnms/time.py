@@ -26,7 +26,7 @@ class Dt(object):
         """
         assert hours >= 0, f"{hours}"
         assert minutes >= 0
-        assert seconds >= 0
+        assert seconds >= -160
 
         new_seconds = Decimal(seconds)%60
         new_minutes = minutes + seconds//60

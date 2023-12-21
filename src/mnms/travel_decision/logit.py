@@ -14,10 +14,9 @@ log = create_logger(__name__)
 
 
 class LogitDecisionModel(AbstractDecisionModel):
-    def __init__(self, mmgraph: MultiLayerGraph, theta=0.01, considered_modes=None, n_shortest_path=3, cost='travel_time', outfile:str=None, verbose_file=False, personal_mob_service_park_radius:float=100):
+    def __init__(self, mmgraph: MultiLayerGraph, theta=0.01, considered_modes=None, n_shortest_path=3, cost='travel_time', outfile:str=None, verbose_file=False, personal_mob_service_park_radius:float=100, min_diff_dist: float = -100, max_diff_dist: float = 100):
         """Logit decision model for the path of a user.
         All routes computed are considered on an equal footing for the choice.
-
         Args:
             -mmgraph: The graph on which the model compute the path
             -theta: Parameter of the logit
@@ -37,7 +36,8 @@ class LogitDecisionModel(AbstractDecisionModel):
                                                  outfile=outfile,
                                                  verbose_file=verbose_file,
                                                  cost=cost,
-                                                 personal_mob_service_park_radius=personal_mob_service_park_radius)
+                                                 personal_mob_service_park_radius=personal_mob_service_park_radius,
+                                                 max_diff_dist=max_diff_dist, min_diff_dist=min_diff_dist)
         self._theta = theta
         self._seed = None
         self._rng = None

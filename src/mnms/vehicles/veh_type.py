@@ -211,8 +211,6 @@ class VehicleActivityServing(VehicleActivity):
         if veh._is_personal:
             self.user.park_personal_vehicle(veh.mobility_service, unode)
 
-
-
 class Vehicle(TimeDependentSubject):
 
     _counter = 0
